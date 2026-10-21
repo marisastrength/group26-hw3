@@ -49,7 +49,7 @@ void Person:: person_address(address person_address)
 // returns persons address
 address Person::person_address()
 {
-    return person_address__;
+    return person_address_;
 }
 // sets persons credit card
 void Person:: person_credit_card(credit_card person_credit_card)
