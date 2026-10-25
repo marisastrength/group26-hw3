@@ -24,6 +24,7 @@ int main()
 
     // 1. Read Credit Cards into temporary array
     credit_card cards[100];
+    string card_names[100]; // stores each credit cardholders name
     int cc_count = 0;
 
     ifstream cc_file("credit_card.txt");
@@ -35,6 +36,7 @@ int main()
         for (int i = 0; i < cc_count; ++i) {
             string cardholder_name;
             std::getline(cc_file, cardholder_name);
+            card_names[i] = cardholder_name; //saves cardholders name
             cc_file >> cards[i].cc_number;
             cc_file >> cards[i].limit;
             cc_file >> cards[i].current_balance;
@@ -63,7 +65,16 @@ int main()
             std::getline(people_file, addr.state);
             std::getline(people_file, addr.zip);
 
-            credit_card user_card = (i < cc_count) ? cards[i] : credit_card();
+            // finds the credit card that belongs to this person
+            credit_card user_card;
+
+            for(int j = 0; j < cc_count; ++j)
+            {
+                if(card_names[j] == name){
+                    user_card = cards[j];
+                    break;
+                }
+            }
             Person p(name, phone, addr, user_card);
             store1.add_customer(p);
         }
