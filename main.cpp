@@ -103,14 +103,30 @@ int main()
         int prod_idx = std::rand() % store1.num_products();
         int quantity = 1 + (std::rand() % 10);
 
-        // Get customer via temporary retrieval from store
-        // We use address and credit card getters to recreate/retrieve customer
-        Person current_cust;
-        // Search customer in store loop logic:
-        // (We can purchase through store1 directly using store1's customers)
-        // Since store1 tracks updated balances internally upon purchase:
-        // We fetch current customer state:
-        // For convenience, we simulate using a random index customer from store setup.
+        
+        // get random customer and product from the store
+        Person current_cust = store1.get_customer(cust_idx);
+        product current_prod = store1.get_product(prod_idx);
+        // attempt to purchase the selected quantity 
+        bool success = store1.make_purchase(current_cust, current_prod, quantity);
+        // print if purchase was susseful or not
+        if(success)
+        {
+         cout << "Purchase successful!" << endl;
+         cout << "Transaction Details:" << endl;
+
+         transaction t = store1.get_transaction(store1.num_transactions() - 1);
+         cout << t.transaction_info() << endl;
+        }
+        else{
+            cout << "Purchase unsuccessful!" << endl;
+            cout << "Transaction Details:" << endl;
+            cout << "Person:" << endl;
+            cout << current_cust.person_info()<< endl;
+            cout << "Product:" << endl;
+            cout<< current_prod.product_info() << endl;
+            cout << "Purchase Quantity: " << quantity << endl;
+        }
     }
 
     // Reprint store info at the end
