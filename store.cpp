@@ -139,8 +139,9 @@ string Store::store_info()
     info += "\n" + product_info() + "\n" + transaction_info();
     return info;
 }
-// returns the customer at the specified index
+// gets a customer from the store using their position in the array
 Person Store::get_customer(int index)
 {
+    // returns the customer at the specified index
     return customers_[index];
 }

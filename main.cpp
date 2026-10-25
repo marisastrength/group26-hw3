@@ -114,13 +114,15 @@ int main()
         {
          cout << "Purchase successful!" << endl;
          cout << "Transaction Details:" << endl;
-
+         // gets the most recent recordred transaction
          transaction t = store1.get_transaction(store1.num_transactions() - 1);
          cout << t.transaction_info() << endl;
         }
         else{
+            // prints the failed purchase and attempted purchase details
             cout << "Purchase unsuccessful!" << endl;
             cout << "Transaction Details:" << endl;
+            // shows the customer, payment, and attempted quantity
             cout << "Person:" << endl;
             cout << current_cust.person_info()<< endl;
             cout << "Product:" << endl;
