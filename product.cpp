@@ -8,5 +8,5 @@ std::string product::product_info()
 
     return "Name: " + name + "\n" +
            "Description: " + description + "\n" +
-           "Price: " + string(price_str);
+           "Price: " + std::string(price_str);
 }
